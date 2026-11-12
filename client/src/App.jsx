@@ -8,6 +8,7 @@ import ShowBook from "./pages/ShowBook.jsx"
 function App() {
 
   return (
+    <div className="relative min-h-full min-w-full">
     <Routes> 
       <Route path="/" element={<Home />}/>
       <Route path="/book/create" element={<CreateBook />}/>
@@ -15,6 +16,7 @@ function App() {
       <Route path="/book/edit/:id" element={<EditBook />}/>
       <Route path="/book/details/:id" element={<ShowBook />}/>
     </Routes>
+    </div>
   )
 }
 
