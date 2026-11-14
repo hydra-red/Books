@@ -48,7 +48,10 @@ async function createBook(req, res) {
     }
 
     if (!Number.isInteger(publishYear) || publishYear < 0) {
-      return res.status(400).json({ message: "Invalid publish year" });
+      console.log("Invalid Publish Year");
+      return res.status(400).json({ message: "Invalid publish year" }
+        
+      );
     }
 
     const book = await Book.create({ title, author, publishYear });

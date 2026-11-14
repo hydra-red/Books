@@ -8,7 +8,7 @@ import ShowBook from "./pages/ShowBook.jsx"
 function App() {
 
   return (
-    <div className="relative min-h-full min-w-full">
+    <div className="min-h-full min-w-full">
     <Routes> 
       <Route path="/" element={<Home />}/>
       <Route path="/book/create" element={<CreateBook />}/>

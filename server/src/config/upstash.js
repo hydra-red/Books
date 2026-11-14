@@ -9,7 +9,7 @@ const rateLimit = new Ratelimit({
     // Upstash Redis instance
     redis:Redis.fromEnv(),
     // limit each IP to 10 requests per 10 seconds
-    limiter:Ratelimit.slidingWindow(10,"10 s")
+    limiter:Ratelimit.slidingWindow(100,"60 s")
 })
 
 export default rateLimit;

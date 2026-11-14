@@ -1,8 +1,20 @@
 import { LuClipboardPen } from "react-icons/lu";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function BookCard({ book }) {
+  const navigate = useNavigate();
+
+  function handleDelete(e) {
+    e.preventDefault();
+    navigate(`/book/delete/${book._id}`);
+  }
+
+  function handleEdit(e) {
+    e.preventDefault();
+    navigate(`/book/edit/${book._id}`);
+  }
+
   return (
     <Link
       to={`/book/details/${book._id}`}
@@ -12,16 +24,13 @@ function BookCard({ book }) {
       <p className="text-primary/80">{book.author}</p>
       <p className="text-primary/80">{book.publishYear}</p>
       <div className="flex justify-end mt-5">
-        <Link to={`/book/edit/${book._id}`}>
-          <button className="btn btn-ghost">
-            <LuClipboardPen className="size-4" />
-          </button>
-        </Link>
-        <Link to={`/book/delete/${book._id}`}>
-        <button className="btn btn-ghost btn-error" onClick>
+        <button className="btn btn-ghost" onClick={handleEdit}>
+          <LuClipboardPen className="size-4" />
+        </button>
+
+        <button className="btn btn-ghost btn-error" onClick={handleDelete}>
           <RiDeleteBinLine className="size-4" />
         </button>
-        </Link>
       </div>
     </Link>
   );
