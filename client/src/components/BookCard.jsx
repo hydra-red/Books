@@ -1,13 +1,24 @@
 import { LuClipboardPen } from "react-icons/lu";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router";
+import axiosInstance from "../lib/axios.js";
+import { toast } from "react-hot-toast";
 
-function BookCard({ book }) {
+function BookCard({ book, setBook }) {
   const navigate = useNavigate();
 
-  function handleDelete(e) {
+  async function handleDelete(e, id) {
     e.preventDefault();
-    navigate(`/book/delete/${book._id}`);
+    if (!window.confirm("Are you sure you want to delete this Book")) return;
+
+    try {
+      const respone = await axiosInstance.delete(`/books/${book._id}`);
+      toast.success("Successfully Deleted the book");
+      setBook((prev) => prev.filter((book) => book._id !== id));
+    } catch (error) {
+      console.log("Error while deleteing the Book", error);
+      toast.error("Something went wrong while deleting Book");
+    }
   }
 
   function handleEdit(e) {
@@ -28,7 +39,10 @@ function BookCard({ book }) {
           <LuClipboardPen className="size-4" />
         </button>
 
-        <button className="btn btn-ghost btn-error" onClick={handleDelete}>
+        <button
+          className="btn btn-ghost btn-error"
+          onClick={(e) => handleDelete(e, book._id)}
+        >
           <RiDeleteBinLine className="size-4" />
         </button>
       </div>

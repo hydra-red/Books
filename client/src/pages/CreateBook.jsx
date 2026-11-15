@@ -32,8 +32,8 @@ export default function CreateBook() {
         setRateLimit(true);
         console.log("Rate limit reached", error.message);
       } else {
-        toast.error("Something went Wrong while creating note");
-        console.log("Error while creating note", error.message);
+        toast.error("Something went Wrong while creating Book");
+        console.log("Error while creating book", error.message);
       }
     } finally {
       setLoading(false);
