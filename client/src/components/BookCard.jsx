@@ -8,7 +8,7 @@ function BookCard({ book, setBook }) {
   const navigate = useNavigate();
 
   async function handleDelete(e, id) {
-    e.preventDefault();
+    e.stopPropagation();
     if (!window.confirm("Are you sure you want to delete this Book")) return;
 
     try {
@@ -22,7 +22,7 @@ function BookCard({ book, setBook }) {
   }
 
   function handleEdit(e) {
-    e.preventDefault();
+    e.stopPropagation();
     navigate(`/book/edit/${book._id}`);
   }
 
