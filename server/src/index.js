@@ -10,11 +10,6 @@ dotenv.config({
 //port
 const port = process.env.PORT || 3000;
 
-// http resquest
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
-
 // database connection and app starting
 connectDB()
 .then(() => {

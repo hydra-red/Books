@@ -66,6 +66,10 @@ export default function CreateBook() {
                   className="input min-w-full"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                  autoFocus
+                  onKeyDown={(e)=>{
+                    if(e.key === "Enter") handleSubmit(e)
+                  }}
                 />
               </div>
 

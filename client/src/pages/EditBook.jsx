@@ -64,7 +64,11 @@ export default function EditBook() {
 
   return (
     <div className="max-w-xl mx-auto my-10">
-      {loading && <div className="w-full mx-auto flex justify-center items-center"><Spinner /></div>}
+      {loading && (
+        <div className="w-full mx-auto flex justify-center items-center">
+          <Spinner />
+        </div>
+      )}
       {!loading && rateLimit && <RateLimit />}
       {!rateLimit && !loading && (
         <div>
@@ -88,6 +92,10 @@ export default function EditBook() {
                   className="input min-w-full"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                  autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key == "Enter") handleSubmit(e);
+                  }}
                 />
               </div>
 

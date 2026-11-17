@@ -12,7 +12,7 @@ function BookCard({ book, setBook }) {
     if (!window.confirm("Are you sure you want to delete this Book")) return;
 
     try {
-      const respone = await axiosInstance.delete(`/books/${book._id}`);
+      const respone = await axiosInstance.delete(`/books/${id}`);
       toast.success("Successfully Deleted the book");
       setBook((prev) => prev.filter((book) => book._id !== id));
     } catch (error) {
